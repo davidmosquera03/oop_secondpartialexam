@@ -4,8 +4,9 @@ David Hernández Mosquera 15/11/2022
 Selected: Movie Tickets
 # Explaining UML Diagram
 
-There is a Theater composed of User. Shows are added.
-Shows inherit from an Abstract Base Class
+There is a Theater composed of various objects of class User. Shows are added
+Shows inherit from an Abstract Base Class.
+The Theater sells tickets according to a movie, its time , seats wanted and user making purchase
 
 
 # How to run

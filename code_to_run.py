@@ -1,4 +1,4 @@
-from code.Theater import Theater,User,Show
+from code.Theater import Theater,Show
 
 
 l1 = [Show("Dune","7:30"),Show("1917","9:30")] # List with shows
