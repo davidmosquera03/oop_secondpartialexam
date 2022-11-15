@@ -1,4 +1,4 @@
-#from TimeError import TimeError
+
 from .Usuario import User
 from .Show import Show
 from typing import List
@@ -16,7 +16,7 @@ class Theater:
         self.vip_seats = vip_seats
         self.reg_seats = reg_seats
         self.shows = []
-        self.users = []
+        self.users:List = []
         if shows is not None: #adds shows if given on init
             self.add_shows(shows)
 
@@ -31,6 +31,10 @@ class Theater:
         self.shows.append(show)
 
     def add_user(self,name:str,preference:str):
+        """
+        Creates a User based on the arguments received
+        this User is appended to own lists
+        """
         self.users.append(User(name,preference))
 
     def add_shows(self,shows:List[Show]):
@@ -62,7 +66,12 @@ class Theater:
                 else:
                     print(f"But not at {time}...")
         return found,on
-    def search_user(self,name):
+
+    def search_user(self,name:str):
+        """
+        Determines whether a person 
+        is or not registered
+        """
         found = None
         for user in self.users:
             user:User
@@ -110,6 +119,9 @@ class Theater:
             print(f"{user} not registered")
 
     def show_shows(self):
+        """
+        Prints each show in the Theatre
+        """
         for show in self.shows:
             print(show)
 

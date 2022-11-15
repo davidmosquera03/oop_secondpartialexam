@@ -1,6 +1,6 @@
 from typing import List
 import abc 
-#from TimeError import TimeError
+
 
 
 class AbstractShow(abc.ABC):
@@ -15,8 +15,8 @@ class AbstractShow(abc.ABC):
         + full: available
         """        
         self.movie = movie
-        self.vip = 0
-        self.reg = 0
+        self.vip:int = 0
+        self.reg:int = 0
         check = time.split(":")
         if (int(check[0])<0 or int(check[0])>23) \
         or (int(check[1])<0 or int(check[1])>59):
@@ -38,6 +38,8 @@ class AbstractShow(abc.ABC):
             return False
 
 class Show(AbstractShow):
+    
+
     @property
     def full(self)->bool:
         """
