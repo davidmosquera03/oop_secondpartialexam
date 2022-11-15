@@ -22,6 +22,6 @@ class Theater{
 }
 Theater o--Show
 Theater *-- User
-Show <|-- AbstractShow
-AbstractShow <|-- abc.ABC 
+AbstractShow  <|-- Show
+abc.ABC   <|--  AbstractShow
 @endumls
