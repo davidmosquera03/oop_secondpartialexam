@@ -1,31 +1,57 @@
 from typing import List
+import abc 
+#from TimeError import TimeError
 
-class TimeError(ValueError):
-    def __init__(self) -> None:
-        """
-        Class Constructor of TimeError
 
-        inherits from ValueError
-        validates time format
+class AbstractShow(abc.ABC):
+    def __init__(self,movie:str, time: str) -> None:
         """
-        super().__init__("Unsupported time")
-
-class Show:
-    def __init__(self, movie:str, time: str) -> None:
-        """
-        Class Constructor of Show
+        Class Constructor of AbstractShow
 
         + movie: movie name
         + vip: number of vip seats (starts at 0)
         + reg: number of regular seats (starts at 0)
         + time: time of screening
         + full: available
-        """
+        """        
         self.movie = movie
         self.vip = 0
         self.reg = 0
         check = time.split(":")
         if (int(check[0])<0 or int(check[0])>23) \
         or (int(check[1])<0 or int(check[1])>59):
-            raise TimeError() #Validation
+            raise ValueError("Wrong time") #Validation
         self.time = time
+
+    @abc.abstractclassmethod
+    def full(self)->bool:
+        """
+        Property decorator to calculate
+        full attribute
+
+        Full if not any seat on VIP
+        or regular is left
+        """
+        if self.vip == 0 and self.reg == 0:
+            return True
+        else:
+            return False
+
+class Show(AbstractShow):
+    @property
+    def full(self)->bool:
+        """
+        Property decorator to calculate
+        full attribute
+
+        Full if not any seat on VIP
+        or regular is left
+        """
+        if self.vip == 0 and self.reg == 0:
+            return True
+        else:
+            return False
+
+    def __repr__(self) -> str:
+        return f"Movie:{self.movie} at {self.time}"
+
