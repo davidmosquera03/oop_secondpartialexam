@@ -1,17 +1,7 @@
 #from TimeError import TimeError
-from Usuario import User
-from Show import Show
+from .Usuario import User
+from .Show import Show
 from typing import List
-
-class TimeError(ValueError):
-    def __init__(self) -> None:
-        """
-        Class Constructor of TimeError
-
-        inherits from ValueError
-        validates time format
-        """
-        super().__init__("Unsupported time")
 
 class Theater:
     def __init__(self, vip_seats:int, reg_seats:int, shows:List[Show]=None) -> None:
@@ -93,7 +83,7 @@ class Theater:
         check = time.split(":")
         if (int(check[0])<0 or int(check[0])>23) \
         or (int(check[1])<0 or int(check[1])>59):
-            raise TimeError() #Validation
+            raise ValueError("Not valid time") #Validation
         
         # Sees availability
         reg = self.search_user(user) 
@@ -117,17 +107,10 @@ class Theater:
                     print(f"available {show.reg}")
                 # Sell possible seats
         else:
-            print("user not registered")
+            print(f"{user} not registered")
 
     def show_shows(self):
         for show in self.shows:
             print(show)
 
-l1 = [Show("Dune","7:30"),Show("1917","9:30")] # List with shows
-
-teatro = Theater(2,1,l1) # Instantiate theater with given seats and shows
-teatro.show_shows()
-teatro.add_user("dave","vip")
-
-teatro.sell_tickets(1,1,"Dune","7:30","dav") # Sell enough tickets and name is right
 

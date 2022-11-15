@@ -5,3 +5,12 @@ Selected: Movie Tickets
 # Explaining UML Diagram
 
 There is a Theater, composed of Users and where shows are added.
+Shows inherit from an Abstract Base Class
+
+
+# How to run
+Please go to code_to_run.py and run it
+
+It will show :
++ the creation of a Theater,Shows being added, a User registered
++ Test of buying tickets correctly and incorrectly

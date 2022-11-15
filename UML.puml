@@ -1,0 +1,27 @@
+@startuml
+class Show{
++full:bool
+}
+class User{
++name
++preference
+}
+class AbstractShow{
++full
+}
+class Theater{
++vip_seats:int
++reg_seats:int
++shows:List[Show]
++add_show()
++add_shows()
++add_user()
++search_user()
++search_available()
++sell_tickets()
+}
+Theater o--Show
+Theater *-- User
+Show <|-- AbstractShow
+AbstractShow <|-- abc.ABC 
+@endumls

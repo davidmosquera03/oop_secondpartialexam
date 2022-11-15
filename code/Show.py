@@ -20,7 +20,7 @@ class AbstractShow(abc.ABC):
         check = time.split(":")
         if (int(check[0])<0 or int(check[0])>23) \
         or (int(check[1])<0 or int(check[1])>59):
-            raise ValueError("Wrong time") #Validation
+            raise ValueError("Not valid time") #Validation
         self.time = time
 
     @abc.abstractclassmethod
